@@ -86,7 +86,7 @@ header {
   color: var(--accent); 
 }
 
-/* Animations */
+/* Scroll Fade-In Animation */
 .fade-in-section {
   opacity: 0;
   transform: translateY(30px);
@@ -97,6 +97,20 @@ header {
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Typewriter Cursor Animation */
+.cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* Sections */
@@ -120,6 +134,7 @@ h1 {
   color: var(--text); 
   font-weight: 700; 
   margin-bottom: 0.25rem; 
+  min-height: 2.8rem;
 }
 
 h2 { 
@@ -160,7 +175,7 @@ p {
   transform: translateY(-2px);
 }
 
-/* Skills */
+/* Skills Grid */
 .skills-grid { 
   display: grid; 
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 

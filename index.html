@@ -32,9 +32,15 @@
     <!-- Index 00: Hero -->
     <section id="hero" class="fade-in-section">
       <div class="section-label">Last updated September 2026 — Portfolio Index 00</div>
-      <h1>Gennie Maicha Ocampo</h1>
-      <p style="font-size: 1.15rem; color: var(--accent); font-weight: 500;">Aspiring Web Developer & IT Student</p>
+      
+      <!-- Typewriter Animated Heading -->
+      <h1><span id="typewriter-title"></span><span class="cursor">|</span></h1>
+      <p style="font-size: 1.15rem; color: var(--accent); font-weight: 500;">
+        <span id="typewriter-subtitle"></span>
+      </p>
+
       <p>I build clean, user-focused web applications and functional digital tools. Passionate about modern interface design and backend workflows.</p>
+      
       <div class="links">
         <a href="mailto:geniemaichao@gmail.com" class="btn">Email Me</a>
         <a href="https://github.com/genniemaichao-lgtm" target="_blank" class="btn">GitHub</a>
@@ -135,8 +141,10 @@
     </footer>
   </div>
 
+  <!-- Scripts -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      // Intersection Observer for section fade-in
       const observerOptions = {
         root: null,
         rootMargin: "0px",
@@ -155,6 +163,36 @@
       document.querySelectorAll(".fade-in-section").forEach(section => {
         observer.observe(section);
       });
+
+      // Typewriter Effect
+      const titleText = "Gennie Maicha Ocampo";
+      const subtitleText = "Aspiring Web Developer & IT Student";
+      
+      const titleElement = document.getElementById("typewriter-title");
+      const subtitleElement = document.getElementById("typewriter-subtitle");
+      
+      let titleIndex = 0;
+      let subtitleIndex = 0;
+
+      function typeTitle() {
+        if (titleIndex < titleText.length) {
+          titleElement.textContent += titleText.charAt(titleIndex);
+          titleIndex++;
+          setTimeout(typeTitle, 80);
+        } else {
+          setTimeout(typeSubtitle, 300);
+        }
+      }
+
+      function typeSubtitle() {
+        if (subtitleIndex < subtitleText.length) {
+          subtitleElement.textContent += subtitleText.charAt(subtitleIndex);
+          subtitleIndex++;
+          setTimeout(typeSubtitle, 40);
+        }
+      }
+
+      typeTitle();
     });
   </script>
 </body>
