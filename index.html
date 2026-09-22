@@ -7,6 +7,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Splash / Welcome Screen Screen Animation -->
+  <div id="welcome-screen">
+    <div class="welcome-content">
+      <div class="welcome-text"><span id="welcome-typewriter"></span><span class="welcome-cursor">|</span></div>
+      <div class="welcome-sub">Portfolio Overview & Projects</div>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
   <div class="container">
 
     <!-- Header / Nav -->
@@ -166,7 +176,63 @@
   <!-- Scripts -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Intersection Observer for section fade-in
+      
+      // 1. Splash Screen Welcome Animation
+      const welcomeText = "WELCOME TO MY PORTFOLIO";
+      const welcomeElement = document.getElementById("welcome-typewriter");
+      const welcomeScreen = document.getElementById("welcome-screen");
+      let wIndex = 0;
+
+      function typeWelcome() {
+        if (wIndex < welcomeText.length) {
+          welcomeElement.textContent += welcomeText.charAt(wIndex);
+          wIndex++;
+          setTimeout(typeWelcome, 60);
+        } else {
+          // Fade out splash screen after loading finishes
+          setTimeout(() => {
+            welcomeScreen.classList.add("fade-out");
+            setTimeout(() => {
+              welcomeScreen.style.display = "none";
+              // Trigger main hero typing animation
+              typeTitle();
+            }, 800);
+          }, 800);
+        }
+      }
+
+      // Start Welcome animation on load
+      typeWelcome();
+
+      // 2. Main Hero Typewriter Effect
+      const titleText = "Gennie Maicha Ocampo";
+      const subtitleText = "Aspiring Web Developer & IT Student";
+      
+      const titleElement = document.getElementById("typewriter-title");
+      const subtitleElement = document.getElementById("typewriter-subtitle");
+      
+      let titleIndex = 0;
+      let subtitleIndex = 0;
+
+      function typeTitle() {
+        if (titleIndex < titleText.length) {
+          titleElement.textContent += titleText.charAt(titleIndex);
+          titleIndex++;
+          setTimeout(typeTitle, 70);
+        } else {
+          setTimeout(typeSubtitle, 200);
+        }
+      }
+
+      function typeSubtitle() {
+        if (subtitleIndex < subtitleText.length) {
+          subtitleElement.textContent += subtitleText.charAt(subtitleIndex);
+          subtitleIndex++;
+          setTimeout(typeSubtitle, 35);
+        }
+      }
+
+      // 3. Scroll Intersection Observer for Sections
       const observerOptions = {
         root: null,
         rootMargin: "0px",
@@ -185,36 +251,6 @@
       document.querySelectorAll(".fade-in-section").forEach(section => {
         observer.observe(section);
       });
-
-      // Typewriter Effect
-      const titleText = "Gennie Maicha Ocampo";
-      const subtitleText = "Aspiring Web Developer & IT Student";
-      
-      const titleElement = document.getElementById("typewriter-title");
-      const subtitleElement = document.getElementById("typewriter-subtitle");
-      
-      let titleIndex = 0;
-      let subtitleIndex = 0;
-
-      function typeTitle() {
-        if (titleIndex < titleText.length) {
-          titleElement.textContent += titleText.charAt(titleIndex);
-          titleIndex++;
-          setTimeout(typeTitle, 80);
-        } else {
-          setTimeout(typeSubtitle, 300);
-        }
-      }
-
-      function typeSubtitle() {
-        if (subtitleIndex < subtitleText.length) {
-          subtitleElement.textContent += subtitleText.charAt(subtitleIndex);
-          subtitleIndex++;
-          setTimeout(typeSubtitle, 40);
-        }
-      }
-
-      typeTitle();
     });
   </script>
 </body>
