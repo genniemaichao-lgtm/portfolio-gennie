@@ -57,17 +57,18 @@ body {
 
 .welcome-content {
   text-align: center;
-  width: 90%;
-  max-width: 400px;
+  width: 95%;
+  max-width: 500px;
 }
 
 .welcome-text {
-  font-size: 1.4rem;
+  font-size: clamp(0.85rem, 4.5vw, 1.4rem);
   font-weight: 700;
   color: var(--text);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   margin-bottom: 0.5rem;
   min-height: 2.2rem;
+  white-space: nowrap;
 }
 
 .welcome-cursor {
